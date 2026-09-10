@@ -395,15 +395,160 @@
 @media (max-width: 768px) {
   .topAppBar {
     height: auto;
-    padding: var(--space-3) var(--space-4);
+    padding: 8px 12px;
     flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .topAppLeft {
+    gap: 8px;
+  }
+
+  .backHomeBtn {
+    font-size: 0.6875rem;
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .backArrow {
+    font-size: 11px;
+  }
+
+  .appBrand {
+    gap: 5px;
+  }
+
+  .appLogoBadge {
+    width: 20px;
+    height: 20px;
+  }
+
+  .appLogoText {
+    font-size: 0.8125rem;
+  }
+
+  .appVersionTag {
+    font-size: 0.5625rem;
+    padding: 1px 4px;
   }
 
   .topAppCenter {
     order: 3;
     max-width: 100%;
     width: 100%;
-    margin: var(--space-2) 0 0 0;
+    margin: 4px 0 0 0;
+  }
+
+  .searchBar {
+    padding: 4px 8px;
+    gap: 5px;
+  }
+
+  .searchSvg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .searchInput {
+    font-size: 0.75rem;
+  }
+
+  .topAppRight {
+    gap: 6px;
+  }
+
+  .themeToggleBtn {
+    font-size: 0.625rem;
+    padding: 3px 7px;
+    gap: 4px;
+  }
+
+  .themeToggleBtn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .exportGroup {
+    display: flex;
+    gap: 4px;
+  }
+
+  .exportBtn {
+    font-size: 0.625rem;
+    padding: 3px 6px;
+  }
+
+  .metricsStrip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metricCard {
+    padding: 6px 10px;
+    gap: 1px;
+  }
+
+  .metricLabel {
+    font-size: 0.5625rem;
+    letter-spacing: 0.04em;
+  }
+
+  .metricValue {
+    font-size: 0.875rem;
+  }
+
+  .metricSub {
+    font-size: 0.625rem;
+  }
+
+  .appMainCanvas {
+    padding: 8px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .topAppBar {
+    padding: 6px 8px;
+    gap: 4px;
+  }
+
+  .backHomeBtn {
+    font-size: 0.625rem;
+    padding: 3px 6px;
+  }
+
+  .backHomeBtn span:not(.backArrow) {
+    display: none;
+  }
+
+  .appLogoBadge {
+    width: 18px;
+    height: 18px;
+  }
+
+  .appLogoText {
+    font-size: 0.75rem;
+  }
+
+  .appVersionTag {
+    display: none;
+  }
+
+  .searchBar {
+    padding: 3px 6px;
+  }
+
+  .searchInput {
+    font-size: 0.6875rem;
+  }
+
+  .themeToggleBtn {
+    font-size: 0.5625rem;
+    padding: 2px 5px;
+  }
+
+  .themeToggleBtn span {
+    display: none;
   }
 
   .exportGroup {
@@ -415,10 +560,18 @@
   }
 
   .metricCard {
-    padding: 8px 14px;
+    padding: 5px 8px;
+  }
+
+  .metricLabel {
+    font-size: 0.5rem;
+  }
+
+  .metricValue {
+    font-size: 0.8125rem;
   }
 
   .appMainCanvas {
-    padding: var(--space-3);
+    padding: 6px;
   }
 }

@@ -682,7 +682,7 @@ export default function Landing({ onTryDemo }) {
       {/* LIGHT THEME ZONE: REALITY GAP + HOW IT WORKS + METRICS */}
       <div className={styles.lightZoneContainer}>
         {/* THE ENGINEERING REALITY GAP: BESPOKE LIFECYCLE & ADR INSPECTOR */}
-        <RealityGap theme={theme} onTryDemo={onTryDemo} />
+        <RealityGap onTryDemo={onTryDemo} />
 
         {/* HOW IT WORKS: 3 FOCUSED STEPS */}
         <section className={styles.howItWorks}>

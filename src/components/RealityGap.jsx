@@ -1,209 +1,137 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from '../styles/RealityGap.module.css';
 
-const AMNESIA_PHASES = [
-  {
-    phase: '01',
-    time: 'Month 0',
-    title: 'Ephemeral Consensus',
-    desc: 'Critical architecture is decided in a quick huddle. Constraints and trade-offs remain trapped in memory.',
-    tag: 'Trapped Knowledge',
-  },
-  {
-    phase: '02',
-    time: 'Month 4',
-    title: 'Context Evaporation',
-    desc: 'Key engineers rotate or leave. Git commit history shows what lines changed, but zero institutional reasoning remains.',
-    tag: 'Reasoning Lost',
-  },
-  {
-    phase: '03',
-    time: 'Month 9',
-    title: 'The Groundhog RFC',
-    desc: 'A new lead proposes the exact same architecture that was already evaluated and rejected 9 months ago. Weeks are wasted.',
-    tag: 'Redundant Debates',
-  },
-  {
-    phase: '04',
-    time: 'Month 14',
-    title: 'Costly Regressions',
-    desc: 'Forgotten edge constraints are unknowingly violated during refactoring, triggering emergency rollbacks.',
-    tag: 'Production Debt',
-  },
-];
+export default function RealityGap({ onTryDemo }) {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start 80%', 'end 20%'],
+  });
 
-export default function RealityGap({ onTryDemo, theme = 'dark' }) {
-  const [activeTab, setActiveTab] = useState('ledger'); // 'ledger' | 'amnesia'
-  const isLight = theme === 'light';
+  // Parallax for the right-hand card
+  const cardY = useTransform(scrollYProgress, [0, 1], [60, -30]);
 
   return (
-    <section className={`${styles.section} ${isLight ? styles.sectionLight : styles.sectionDark}`}>
+    <section ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
-        {/* Section Header */}
-        <div className={styles.header}>
-          <span className={styles.eyebrow}>The Engineering Reality</span>
-          <h2 className={styles.title}>From tribal knowledge to sovereign truth</h2>
-          <p className={styles.subtitle}>
-            Code shows what changed. Git shows who committed it. Decision Log ensures your team never loses why it happened.
-          </p>
-        </div>
 
-        {/* View Switcher Toggle */}
-        <div className={styles.toggleWrapper}>
-          <div className={styles.togglePill}>
+        {/* ── Asymmetric Hero Grid ── */}
+        <div className={styles.heroGrid}>
+
+          {/* LEFT COLUMN: Editorial Statement */}
+          <div className={styles.editorialCol}>
+            <span className={styles.kicker}>The Real Problem</span>
+
+            <h2 className={styles.headline}>
+              Nobody writes down why we chose this over that.
+            </h2>
+
+            <p className={styles.lede}>
+              Your git log tells you <em>what</em> changed. Slack tells you <em>who</em> argued about it. But six months later, nobody can tell you <em>why</em> you picked Kafka over RabbitMQ, or why you dropped the mobile app.
+            </p>
+
+            {/* Erosion Ticker */}
+            <div className={styles.erosionStrip}>
+              <div className={styles.erosionItem}>
+                <span className={styles.erosionNum}>4 mo</span>
+                <span className={styles.erosionLabel}>before people forget the reasoning</span>
+              </div>
+              <div className={styles.erosionDivider} />
+              <div className={styles.erosionItem}>
+                <span className={styles.erosionNum}>67%</span>
+                <span className={styles.erosionLabel}>of teams have the same argument twice</span>
+              </div>
+              <div className={styles.erosionDivider} />
+              <div className={styles.erosionItem}>
+                <span className={styles.erosionNum}>$0</span>
+                <span className={styles.erosionLabel}>to just write it down</span>
+              </div>
+            </div>
+
             <button
               type="button"
-              className={`${styles.toggleBtn} ${activeTab === 'amnesia' ? styles.toggleBtnActiveAmnesia : ''}`}
-              onClick={() => setActiveTab('amnesia')}
+              className="btn-primary"
+              onClick={onTryDemo}
+              style={{ marginTop: '8px', padding: '10px 24px', fontSize: '13px', alignSelf: 'flex-start' }}
             >
-              <span className={styles.toggleDot} style={{ background: activeTab === 'amnesia' ? '#F76363' : '#949290' }} />
-              Tribal Knowledge (Amnesia)
-            </button>
-            <button
-              type="button"
-              className={`${styles.toggleBtn} ${activeTab === 'ledger' ? styles.toggleBtnActiveLedger : ''}`}
-              onClick={() => setActiveTab('ledger')}
-            >
-              <span className={styles.toggleDot} style={{ background: activeTab === 'ledger' ? '#FF3D01' : '#949290' }} />
-              Decision Log (Immutable Ledger)
+              Try It Out
             </button>
           </div>
-        </div>
 
-        {/* Dynamic Display Pane */}
-        <div className={styles.displayArea}>
-          <AnimatePresence mode="wait">
-            {activeTab === 'amnesia' ? (
-              <motion.div
-                key="amnesia"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.25 }}
-                className={styles.amnesiaGrid}
-              >
-                {AMNESIA_PHASES.map((item, idx) => (
-                  <div key={idx} className={styles.amnesiaCard}>
-                    <div className={styles.amnesiaCardTop}>
-                      <div className={styles.amnesiaTimeBadge}>{item.time}</div>
-                      <span className={styles.amnesiaTag}>{item.tag}</span>
-                    </div>
-                    <h3 className={styles.amnesiaCardTitle}>{item.title}</h3>
-                    <p className={styles.amnesiaCardDesc}>{item.desc}</p>
-                    <div className={styles.amnesiaConnector} />
-                  </div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="ledger"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.25 }}
-                className={styles.ledgerContainer}
-              >
-                {/* Real ADR Technical Inspector Card */}
-                <div className={styles.adrInspectCard}>
-                  {/* ADR Window Header */}
-                  <div className={styles.adrCardHeader}>
-                    <div className={styles.adrMetaLeft}>
-                      <span className={styles.adrIdBadge}>ADR-064</span>
-                      <span className={styles.adrHashBadge}>commit #7f2b9a</span>
-                      <span className={styles.adrStatusBadge}>Active &bull; Verified</span>
-                    </div>
-                    <div className={styles.adrMetaRight}>
-                      <span className={styles.adrDateText}>Recorded Sept 10, 2024</span>
-                    </div>
-                  </div>
+          {/* RIGHT COLUMN: Floating ADR Specimen */}
+          <motion.div className={styles.specimenCol} style={{ y: cardY }}>
+            <div className={styles.specimen}>
 
-                  {/* ADR Subject Title */}
-                  <div className={styles.adrTitleRow}>
-                    <h3 className={styles.adrSubjectTitle}>
-                      Adopt Debezium CDC with Kafka for Event-Driven Order State
-                    </h3>
-                    <span className={styles.adrCategoryBadge}>Architecture</span>
-                  </div>
+              {/* Window Chrome */}
+              <div className={styles.specChrome}>
+                <div className={styles.chromeDots}>
+                  <span className={styles.chrDot} data-color="red" />
+                  <span className={styles.chrDot} data-color="yellow" />
+                  <span className={styles.chrDot} data-color="green" />
+                </div>
+                <span className={styles.chromeFile}>ADR-064.md</span>
+              </div>
 
-                  {/* Context Block */}
-                  <div className={styles.adrBlock}>
-                    <span className={styles.adrBlockLabel}>Context &amp; Operational Drivers</span>
-                    <p className={styles.adrBlockContent}>
-                      Direct HTTP webhook fan-out between <code>order-service</code> and <code>billing-service</code> generated 3.2% dropped transactions during flash sale traffic spikes exceeding 12,000 req/sec.
+              {/* Specimen Body */}
+              <div className={styles.specBody}>
+
+                {/* Meta Row */}
+                <div className={styles.specMeta}>
+                  <span className={styles.specId}>ADR-064</span>
+                  <span className={styles.specStatus}>Active</span>
+                  <span className={styles.specDate}>Sept 10, 2024</span>
+                </div>
+
+                {/* Title */}
+                <h3 className={styles.specTitle}>
+                  Switch to Kafka CDC instead of direct webhooks for order updates
+                </h3>
+
+                {/* Context */}
+                <div className={styles.specBlock}>
+                  <div className={styles.specBlockBar} />
+                  <div>
+                    <span className={styles.specLabel}>Why we made this change</span>
+                    <p className={styles.specText}>
+                      We were losing about 3% of orders during big sales because <code>order-service</code> was calling <code>billing-service</code> directly and it couldn't keep up past 12k requests per second.
                     </p>
                   </div>
+                </div>
 
-                  {/* Evaluated & Discarded Alternatives Matrix */}
-                  <div className={styles.adrBlock}>
-                    <span className={styles.adrBlockLabel}>Evaluated Alternatives &amp; Discard Rationale</span>
-                    <div className={styles.alternativesGrid}>
-                      <div className={styles.altItemRejected}>
-                        <div className={styles.altHeader}>
-                          <span className={styles.altStatusRejected}>Discarded</span>
-                          <span className={styles.altName}>Dual-Write (Postgres + Redis)</span>
-                        </div>
-                        <p className={styles.altReason}>
-                          Risk of 2PC distributed state divergence during partial network partitions.
-                        </p>
-                      </div>
-
-                      <div className={styles.altItemRejected}>
-                        <div className={styles.altHeader}>
-                          <span className={styles.altStatusRejected}>Discarded</span>
-                          <span className={styles.altName}>Outbox Table Polling</span>
-                        </div>
-                        <p className={styles.altReason}>
-                          High DB CPU utilization and 300ms polling latency ceiling fails p99 SLA (&lt;30ms).
-                        </p>
-                      </div>
-
-                      <div className={styles.altItemSelected}>
-                        <div className={styles.altHeader}>
-                          <span className={styles.altStatusSelected}>Selected</span>
-                          <span className={styles.altName}>Kafka CDC via Debezium</span>
-                        </div>
-                        <p className={styles.altReason}>
-                          Zero application write overhead, guaranteed log ordering, and sub-15ms event delivery.
-                        </p>
-                      </div>
+                {/* Alternatives */}
+                <div className={styles.specAlts}>
+                  <span className={styles.specLabel}>What else we considered</span>
+                  <div className={styles.altTable}>
+                    <div className={styles.altRowRej}>
+                      <span className={styles.rejBadge}>Rejected</span>
+                      <span>Dual-Write (Postgres + Redis)</span>
                     </div>
-                  </div>
-
-                  {/* Governance & Blast Radius Footer */}
-                  <div className={styles.adrFooterGrid}>
-                    <div className={styles.footerCol}>
-                      <span className={styles.footerLabel}>Boundaries &amp; Scope</span>
-                      <span className={styles.footerVal}><code>checkout-api</code>, <code>payment-gateway</code></span>
+                    <div className={styles.altRowRej}>
+                      <span className={styles.rejBadge}>Rejected</span>
+                      <span>Outbox Table Polling</span>
                     </div>
-                    <div className={styles.footerCol}>
-                      <span className={styles.footerLabel}>Review Trigger</span>
-                      <span className={styles.footerVal}>Re-evaluate if ingestion &gt; 500k RPS</span>
-                    </div>
-                    <div className={styles.footerCol}>
-                      <span className={styles.footerLabel}>Sign-off Consensus</span>
-                      <span className={styles.footerVal}>@elena_infra (Staff) &bull; @chen_arch (VP)</span>
+                    <div className={styles.altRowSel}>
+                      <span className={styles.selBadge}>Selected</span>
+                      <span>Kafka CDC via Debezium</span>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
 
-        {/* Bottom Banner */}
-        <div className={styles.auditBottomBanner}>
-          <div className={styles.bannerText}>
-            <strong>Instant Historical Clarity:</strong> When a new engineer joins or an RFC is submitted, retrieve the full institutional rationale in seconds.
-          </div>
-          <button
-            type="button"
-            className="btn-primary"
-            onClick={onTryDemo}
-            style={{ fontSize: '13px', padding: '8px 20px', whiteSpace: 'nowrap' }}
-          >
-            Explore Live Ledger
-          </button>
+                {/* Footer */}
+                <div className={styles.specFooter}>
+                  <div className={styles.specFootItem}>
+                    <span className={styles.specFootLabel}>Affected Services</span>
+                    <span className={styles.specFootVal}><code>checkout-api</code>, <code>payment-gw</code></span>
+                  </div>
+                  <div className={styles.specFootItem}>
+                    <span className={styles.specFootLabel}>Sign-off</span>
+                    <span className={styles.specFootVal}>@elena &bull; @chen</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -227,3 +227,122 @@
   font-size: 0.75rem;
   padding: 6px 14px;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .streamContainer {
+    gap: 10px;
+  }
+
+  .streamHeader {
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .statsBadge {
+    font-size: 0.5625rem;
+    padding: 1px 6px;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .controlsRow {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .controlLabel {
+    font-size: 0.625rem;
+  }
+
+  .controlSelect {
+    padding: 3px 6px;
+    font-size: 0.6875rem;
+  }
+
+  .filterBar {
+    padding: 6px 10px;
+    gap: 5px;
+  }
+
+  .filterLabel {
+    font-size: 0.5625rem;
+    min-width: 50px;
+  }
+
+  .pillBtn {
+    font-size: 0.5625rem;
+    padding: 2px 7px;
+  }
+
+  .searchBanner {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  .resetFilterBtn {
+    font-size: 0.75rem;
+  }
+
+  .cardsGrid {
+    gap: 8px;
+  }
+
+  .emptyState {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .emptyIcon {
+    font-size: 22px;
+  }
+
+  .emptyTitle {
+    font-size: 0.875rem;
+  }
+
+  .emptySubtitle {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .streamHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controlsRow {
+    width: 100%;
+  }
+
+  .controlItem {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .controlSelect {
+    width: 100%;
+    font-size: 0.625rem;
+    padding: 3px 4px;
+  }
+
+  .controlLabel {
+    font-size: 0.5625rem;
+  }
+
+  .pillBtn {
+    font-size: 0.5rem;
+    padding: 1px 5px;
+  }
+
+  .filterLabel {
+    font-size: 0.5rem;
+    min-width: 40px;
+  }
+}
