@@ -1,0 +1,620 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  /* ==========================================================================
+     TYPOGRAPHY FAMILY
+     ========================================================================== */
+  --font-sans: "Roboto", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Black Ops One", system-ui;
+  --font-serif: var(--font-sans);
+  --font-family: var(--font-sans);
+
+  /* MD3 TYPE SCALE */
+  --fs-display-lg: 3.5rem;    /* 56px - Hero headlines */
+  --fs-headline-lg: 2.5rem;   /* 40px - Section titles */
+  --fs-headline-md: 2rem;     /* 32px - Subsection titles */
+  --fs-title-lg: 1.375rem;    /* 22px - Card titles */
+  --fs-title-md: 1rem;        /* 16px - Prominent titles */
+  --fs-body-lg: 1.125rem;     /* 18px - Lead paragraphs */
+  --fs-body-md: 1rem;         /* 16px - Standard body */
+  --fs-body-sm: 0.875rem;     /* 14px - Compact body */
+  --fs-label-md: 0.875rem;    /* 14px - Button text / labels */
+  --fs-label-sm: 0.75rem;     /* 12px - Captions / tags / metadata */
+
+  /* LEGACY TYPE SCALE ALIASES */
+  --fs-3xl: var(--fs-display-lg);
+  --fs-2xl: var(--fs-headline-lg);
+  --fs-xl: var(--fs-title-lg);
+  --fs-lg: var(--fs-body-lg);
+  --fs-base: var(--fs-body-md);
+  --fs-sm: var(--fs-body-sm);
+  --fs-xs: var(--fs-label-sm);
+
+  /* FONT WEIGHTS */
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 500; /* MD3 uses Medium 500 for emphasized text */
+  --fw-700: 700;
+
+  /* ==========================================================================
+     DESIGN SYSTEM TOKEN DEFINITIONS (Resolved in Dark)
+     ========================================================================== */
+
+  /* BRAND TOKENS */
+  --color-brand: #FF3D01;                 /* solid/brand/60 */
+  --color-brand-hover: #FE542D;           /* solid/brand/55 */
+  --color-brand-active: #FC6645;          /* solid/brand/50 */
+  --color-brand-secondary: rgba(255, 61, 1, 0.15); /* opacity-15/brand/60 (#FF3D0126) */
+  --color-brand-secondary-hover: rgba(255, 61, 1, 0.30); /* opacity-30/brand/60 (#FF3D014D) */
+  --color-brand-secondary-active: rgba(252, 102, 69, 0.30); /* opacity-30/brand/50 (#FC66454D) */
+  --color-brand-secondary-disabled: rgba(255, 61, 1, 0.08); /* opacity-8/brand/60 (#FF3D0114) */
+  --color-brand-disabled: #272524;        /* solid/neutral/115 */
+  --color-brand-fg: #FC6645;              /* solid/brand/50 */
+  --color-brand-fg-hover: #FF8A6F;        /* solid/brand/40 */
+  --color-brand-fg-active: #FFB3A0;       /* solid/brand/30 */
+  --color-brand-surface-flat: #571002;    /* solid/brand/100 */
+  --color-on-brand: #FFFFFF;
+
+  /* NEUTRAL & DARK SURFACES */
+  --color-bg-base: #151312;               /* solid/neutral/130 (surface-primary) */
+  --color-bg-extreme: #070605;            /* solid/neutral/150 */
+  --color-surface-secondary: #211F1D;     /* solid/neutral/120 (fill-secondary) */
+  --color-surface-tertiary: #2E2C2B;      /* solid/neutral/110 (fill-tertiary) */
+  --color-surface-elevated: #393735;      /* solid/neutral/105 (surface-overlay) */
+  --color-fill-elevated-hover: #2E2C2B;   /* solid/neutral/110 */
+  --color-fill-elevated-active: #444241;  /* solid/neutral/100 */
+  --color-fill-tertiary-active: #5F5D5C;  /* solid/neutral/90 */
+
+  /* NEUTRAL INVERSE (LIGHT SURFACES) */
+  --color-fill-inverse: #F7F5F4;          /* solid/neutral/10 */
+  --color-fill-inverse-hover: #EFEDEC;    /* solid/neutral/20 */
+  --color-fill-inverse-active: #E3E1E0;   /* solid/neutral/30 */
+  --color-content-inverse-primary: #070605; /* solid/neutral/150 */
+  --color-content-inverse-secondary: #2E2C2B; /* solid/neutral/110 */
+
+  /* CONTENT / TYPOGRAPHY COLORS */
+  --color-content-primary: #EFEDEC;       /* solid/neutral/20 */
+  --color-content-secondary: #A9A7A6;     /* solid/neutral/60 */
+  --color-content-tertiary: #949290;      /* solid/neutral/70 */
+  --color-content-disabled: rgba(239, 237, 236, 0.5); /* #EFEDEC80 */
+
+  /* BORDERS */
+  --color-border-primary: #242221;        /* solid/neutral/117 */
+  --color-border-secondary: #343130;      /* solid/neutral/107 */
+  --color-border-secondary-hover: #403E3C;/* solid/neutral/102 */
+  --color-border-tertiary: #3C3A39;       /* solid/neutral/103 */
+  --color-border-tertiary-hover: #444241; /* solid/neutral/100 */
+
+  /* SEMANTIC: SUCCESS */
+  --color-success: #1D9156;               /* solid/success/60 */
+  --color-success-hover: #389D64;         /* solid/success/55 */
+  --color-success-active: #4DA972;        /* solid/success/50 */
+  --color-success-secondary: rgba(29, 145, 86, 0.15); /* #1D915626 */
+  --color-success-surface-flat: #013118;  /* solid/success/100 */
+  --color-content-success: #4DA972;       /* solid/success/50 */
+  --color-content-success-hover: #7AC394; /* solid/success/40 */
+
+  /* SEMANTIC: WARNING */
+  --color-warning: #A36E07;               /* solid/warning/60 */
+  --color-warning-hover: #B17C25;         /* solid/warning/55 */
+  --color-warning-active: #BF8B39;        /* solid/warning/50 */
+  --color-warning-secondary: rgba(163, 110, 7, 0.15); /* #A36E0726 */
+  --color-warning-surface-flat: #362200;  /* solid/warning/100 */
+  --color-content-warning: #BF8B39;       /* solid/warning/50 */
+  --color-content-warning-hover: #D9A75E; /* solid/warning/40 */
+
+  /* SEMANTIC: CRITICAL / DESTRUCTIVE */
+  --color-critical: #E83E47;              /* solid/error/60 */
+  --color-critical-hover: #F05255;        /* solid/error/55 */
+  --color-critical-active: #F76363;       /* solid/error/50 */
+  --color-critical-secondary: rgba(232, 62, 71, 0.15); /* #E83E4726 */
+  --color-critical-surface-flat: #520D12; /* solid/error/100 */
+  --color-content-critical: #F76363;      /* solid/error/50 */
+  --color-content-critical-hover: #FF8783;/* solid/error/40 */
+  --color-content-critical-active: #FFB2AD;/* solid/error/30 */
+
+  /* SEMANTIC: INFO */
+  --color-info: #2C74EA;                  /* solid/info/60 */
+  --color-info-hover: #2C74EA;
+  --color-info-active: #5292FD;           /* solid/info/50 */
+  --color-info-secondary: rgba(44, 116, 234, 0.15); /* #2C74EA26 */
+  --color-info-surface-flat: #062457;     /* solid/info/100 */
+  --color-content-info: #5292FD;          /* solid/info/50 */
+  --color-content-info-hover: #7DAEFF;    /* solid/info/40 */
+
+  /* BACKWARD COMPATIBILITY MAPPINGS */
+  --color-md-primary: var(--color-brand);
+  --color-md-on-primary: #FFFFFF;
+  --color-md-primary-container: var(--color-brand-secondary);
+  --color-md-on-primary-container: var(--color-brand-fg-active);
+  --color-md-primary-hover: var(--color-brand-hover);
+  --color-md-primary-active: var(--color-brand-active);
+
+  --color-md-secondary: var(--color-surface-tertiary);
+  --color-md-on-secondary: var(--color-content-primary);
+  --color-md-secondary-container: var(--color-brand-secondary);
+  --color-md-on-secondary-container: var(--color-brand-fg-active);
+
+  --color-md-tertiary: var(--color-surface-elevated);
+  --color-md-on-tertiary: var(--color-content-primary);
+  --color-md-tertiary-container: var(--color-surface-tertiary);
+  --color-md-on-tertiary-container: var(--color-content-secondary);
+
+  --color-md-surface: var(--color-fill-inverse);
+  --color-md-on-surface: var(--color-content-inverse-primary);
+  --color-md-surface-variant: var(--color-fill-inverse-hover);
+  --color-md-on-surface-variant: var(--color-content-inverse-secondary);
+
+  --color-md-surface-container-lowest: #FFFFFF;
+  --color-md-surface-container-low: var(--color-fill-inverse);
+  --color-md-surface-container: var(--color-fill-inverse-hover);
+  --color-md-surface-container-high: var(--color-fill-inverse-active);
+  --color-md-surface-container-highest: #DCD8D5;
+
+  --color-md-outline: var(--color-content-secondary);
+  --color-md-outline-variant: #D5D1CE;
+  --color-md-scrim: #000000;
+
+  --color-md-inverse-surface: var(--color-bg-base);
+  --color-md-inverse-on-surface: var(--color-content-primary);
+  --color-md-inverse-primary: var(--color-brand-fg-active);
+
+  --color-success-container: var(--color-success-secondary);
+  --color-on-success-container: var(--color-content-success);
+  --color-warning-container: var(--color-warning-secondary);
+  --color-on-warning-container: var(--color-content-warning);
+  --color-danger: var(--color-critical);
+  --color-danger-container: var(--color-critical-secondary);
+  --color-on-danger-container: var(--color-content-critical);
+
+  --color-accent-primary: var(--color-brand);
+  --color-accent-hover: var(--color-brand-hover);
+  --color-accent-dark: var(--color-brand-active);
+  --color-secondary: var(--color-surface-tertiary);
+  --color-surface-primary: var(--color-surface-secondary);
+  --color-surface-secondary: var(--color-surface-tertiary);
+  --color-surface-tertiary: var(--color-surface-elevated);
+  --color-surface-inverse: var(--color-fill-inverse);
+  --color-text-primary: var(--color-content-primary);
+  --color-text-secondary: var(--color-content-secondary);
+  --color-text-tertiary: var(--color-content-tertiary);
+  --color-text-inverse: var(--color-content-inverse-primary);
+  --color-border-primary: var(--color-border-secondary);
+  --color-border-subtle: rgba(52, 49, 48, 0.4);
+
+  /* MD3 ORGANIC RADII */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;   /* Standard Card radius */
+  --radius-xl: 28px;   /* Dialogs & Sheets */
+  --radius-2xl: 32px;  /* Large Containers */
+  --radius-3xl: 48px;  /* Hero & Major Sections */
+  --radius-full: 9999px; /* Pill Buttons, Chips, Badges */
+
+  /* SHADOWS & BLUR */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -4px rgba(0, 0, 0, 0.6);
+  --shadow-elevation-1: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-elevation-2: 0 2px 6px 2px rgba(0, 0, 0, 0.45), 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.5), 0 1px 3px 0 rgba(0, 0, 0, 0.6);
+
+  /* EASING */
+  --ease-md3: cubic-bezier(0.2, 0, 0, 1);
+  --transition-standard: all 300ms var(--ease-md3);
+  --transition-fast: all 200ms var(--ease-md3);
+
+  /* SPACING */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+}
+
+/* ==========================================================================
+   BASE & RESET
+   ========================================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body, button, input, textarea, select, optgroup {
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  font-size: var(--fs-body-md);
+  line-height: 1.5;
+  color: var(--color-content-primary);
+  background: var(--color-bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code, kbd, samp, pre, .font-mono {
+  font-family: var(--font-mono);
+  font-optical-sizing: auto;
+}
+
+/* ==========================================================================
+   FONT UTILITY CLASSES
+   ========================================================================== */
+.black-ops-one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jetbrains-mono,
+.jetbrains-mono-regular {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jetbrains-mono-medium {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.jetbrains-mono-bold {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto,
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6, p, span, a, label, li, td, th {
+  font-family: var(--font-sans);
+}
+
+h1 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-display-lg);
+  font-weight: var(--fw-700);
+  line-height: 1.15;
+  color: var(--color-content-primary);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-headline-lg);
+  font-weight: var(--fw-700);
+  line-height: 1.2;
+  color: var(--color-content-primary);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-title-lg);
+  font-weight: var(--fw-600);
+  line-height: 1.3;
+  color: var(--color-content-primary);
+}
+
+p {
+  font-size: var(--fs-body-md);
+  line-height: 1.55;
+  color: var(--color-content-secondary);
+}
+
+small {
+  font-size: var(--fs-label-sm);
+  color: var(--color-content-tertiary);
+}
+
+/* ==========================================================================
+   BUTTONS (Primary, Tonal, Outline, Ghost, Inverse)
+   ========================================================================== */
+button {
+  font-family: var(--font-sans);
+  font-size: var(--fs-label-md);
+  font-weight: var(--fw-600);
+  letter-spacing: 0.01em;
+  padding: 10px 24px;
+  border-radius: var(--radius-xs);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  transition: var(--transition-standard);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+/* Primary Button: fill-brand (#FF3D01), fg: #FFFFFF */
+button.btn-primary,
+.btn-primary {
+  background: var(--color-brand);
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(255, 61, 1, 0.25);
+}
+
+button.btn-primary:hover:not(:disabled),
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-brand-hover);
+  box-shadow: 0 4px 16px rgba(255, 61, 1, 0.4);
+}
+
+button.btn-primary:active:not(:disabled),
+.btn-primary:active:not(:disabled) {
+  background: var(--color-brand-active);
+  transform: scale(0.96);
+}
+
+button.btn-primary:disabled,
+.btn-primary:disabled {
+  background: rgba(33, 31, 29, 0.5);
+  color: rgba(239, 237, 236, 0.5);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Tonal / Secondary Button: fill-brand-secondary (#FF3D0126), fg: content-brand-active (#FFB3A0) */
+button.btn-secondary,
+button.btn-tonal,
+.btn-secondary,
+.btn-tonal {
+  background: var(--color-brand-secondary);
+  color: var(--color-brand-fg-active);
+  border: 1px solid rgba(255, 61, 1, 0.2);
+}
+
+button.btn-secondary:hover:not(:disabled),
+button.btn-tonal:hover:not(:disabled),
+.btn-secondary:hover:not(:disabled),
+.btn-tonal:hover:not(:disabled) {
+  background: var(--color-brand-secondary-hover);
+  border-color: rgba(255, 61, 1, 0.35);
+}
+
+button.btn-secondary:active:not(:disabled),
+button.btn-tonal:active:not(:disabled),
+.btn-secondary:active:not(:disabled),
+.btn-tonal:active:not(:disabled) {
+  background: var(--color-brand-secondary-active);
+  transform: scale(0.96);
+}
+
+/* Inverse Button: fill-inverse (#F7F5F4), fg: content-inverse-primary (#070605) */
+button.btn-inverse,
+.btn-inverse {
+  background: var(--color-fill-inverse);
+  color: var(--color-content-inverse-primary);
+}
+
+button.btn-inverse:hover:not(:disabled),
+.btn-inverse:hover:not(:disabled) {
+  background: var(--color-fill-inverse-hover);
+}
+
+/* Outlined Button: border-secondary (#343130), fg: content-primary (#EFEDEC) */
+button.btn-outlined,
+.btn-outlined {
+  background: transparent;
+  color: var(--color-content-primary);
+  border: 1px solid var(--color-border-secondary);
+}
+
+button.btn-outlined:hover:not(:disabled),
+.btn-outlined:hover:not(:disabled) {
+  background: var(--color-surface-secondary);
+  border-color: var(--color-border-secondary-hover);
+}
+
+/* Ghost Button: fg: content-primary (#EFEDEC) */
+button.btn-ghost,
+.btn-ghost {
+  background: transparent;
+  color: var(--color-content-primary);
+  border: none;
+  padding: 8px 16px;
+}
+
+button.btn-ghost:hover:not(:disabled),
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-surface-secondary);
+}
+
+/* ==========================================================================
+   FORM INPUTS (Text Fields, Textarea, Select)
+   ========================================================================== */
+input,
+textarea,
+select {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body-md);
+  padding: 12px 16px;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-xs);
+  color: var(--color-content-primary);
+  transition: var(--transition-fast);
+  width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  background: var(--color-surface-secondary);
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(255, 61, 1, 0.2);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-content-tertiary);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background: var(--color-fill-secondary-disabled);
+  border-color: rgba(52, 49, 48, 0.5);
+  color: var(--color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   CARDS & SURFACES
+   ========================================================================== */
+.card {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-standard);
+}
+
+.card:hover {
+  background: var(--color-surface-tertiary);
+  border-color: var(--color-border-secondary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   BADGES & PILLS
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-600);
+  font-family: var(--font-mono);
+  background: var(--color-surface-secondary);
+  color: var(--color-content-secondary);
+  border: 1px solid var(--color-border-secondary);
+}
+
+.badge.brand,
+.badge.primary {
+  background: var(--color-brand-secondary);
+  color: var(--color-brand-fg-active);
+  border-color: rgba(255, 61, 1, 0.25);
+}
+
+.badge.success,
+.badge.active {
+  background: var(--color-success-secondary);
+  color: var(--color-content-success);
+  border-color: rgba(29, 145, 86, 0.3);
+}
+
+.badge.warning {
+  background: var(--color-warning-secondary);
+  color: var(--color-content-warning);
+  border-color: rgba(163, 110, 7, 0.3);
+}
+
+.badge.critical,
+.badge.danger {
+  background: var(--color-critical-secondary);
+  color: var(--color-content-critical);
+  border-color: rgba(232, 62, 71, 0.3);
+}
+
+.badge.info {
+  background: var(--color-info-secondary);
+  color: var(--color-content-info);
+  border-color: rgba(44, 116, 234, 0.3);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & MOTION PREFERENCES
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

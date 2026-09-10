@@ -1,0 +1,229 @@
+/* Stream Ledger Container */
+.streamContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Header & Metadata */
+.streamHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--dl-border, var(--color-border));
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.1875rem;
+  font-weight: var(--fw-700);
+  color: var(--dl-text-primary, var(--color-content-primary));
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.statsBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-brand);
+  background: rgba(255, 61, 1, 0.1);
+  border: 1px solid rgba(255, 61, 1, 0.25);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.subtitle {
+  font-size: 0.8125rem;
+  color: var(--dl-text-secondary, var(--color-content-secondary));
+  margin: 0;
+}
+
+/* Controls */
+.controlsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.controlItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.controlLabel {
+  font-size: 0.75rem;
+  color: var(--dl-text-tertiary, var(--color-content-tertiary));
+  font-weight: 600;
+}
+
+.controlSelect {
+  background: var(--dl-surface-input, var(--color-surface-secondary));
+  border: 1px solid var(--dl-border, var(--color-border));
+  border-radius: var(--radius-xs);
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-family: var(--font-family);
+  color: var(--dl-text-primary, var(--color-content-primary));
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.controlSelect:focus {
+  border-color: var(--color-brand);
+}
+
+/* Filter Pills Bar */
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--dl-surface-card, var(--color-surface-secondary));
+  border: 1px solid var(--dl-border, var(--color-border));
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.filterLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dl-text-tertiary, var(--color-content-tertiary));
+  min-width: 65px;
+}
+
+.pillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.pillBtn {
+  background: var(--dl-surface-input, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--dl-border, var(--color-border));
+  color: var(--dl-text-secondary, var(--color-content-secondary));
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pillBtn:hover {
+  background: rgba(255, 61, 1, 0.08);
+  color: var(--dl-text-primary, var(--color-content-primary));
+  border-color: rgba(255, 61, 1, 0.25);
+}
+
+.pillBtnActive {
+  background: rgba(255, 61, 1, 0.15) !important;
+  border-color: rgba(255, 61, 1, 0.5) !important;
+  color: var(--color-brand) !important;
+  font-weight: 700;
+}
+
+/* Search Banner */
+.searchBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 61, 1, 0.08);
+  border: 1px solid rgba(255, 61, 1, 0.25);
+  border-radius: var(--radius-xs);
+  padding: 7px 12px;
+  font-size: 0.8125rem;
+  color: var(--dl-text-primary, var(--color-content-primary));
+}
+
+.resetFilterBtn {
+  background: transparent;
+  border: none;
+  color: var(--color-brand);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 0;
+  transition: opacity 0.15s ease;
+}
+
+.resetFilterBtn:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Stream Cards */
+.cardsStream {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10) var(--space-6);
+  background: var(--dl-surface-card, var(--color-surface-secondary));
+  border: 1px dashed var(--dl-border, var(--color-border));
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 28px;
+  margin-bottom: var(--space-2);
+  opacity: 0.6;
+}
+
+.emptyTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dl-text-primary, var(--color-content-primary));
+  margin: 0 0 4px 0;
+}
+
+.emptySubtitle {
+  font-size: 0.8125rem;
+  color: var(--dl-text-secondary, var(--color-content-secondary));
+  max-width: 380px;
+  margin: 0 0 var(--space-4) 0;
+  line-height: 1.45;
+}
+
+.resetAllBtn {
+  font-size: 0.75rem;
+  padding: 6px 14px;
+}

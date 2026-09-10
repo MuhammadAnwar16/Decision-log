@@ -1,0 +1,187 @@
+/* Form Container Card */
+.formCard {
+  background: var(--dl-surface-card, var(--color-surface-secondary));
+  border: 1px solid var(--dl-border, var(--color-border));
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--dl-border, var(--color-border));
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adrPill {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: var(--fw-600);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  background: rgba(255, 61, 1, 0.1);
+  border: 1px solid rgba(255, 61, 1, 0.25);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.title {
+  font-size: 1.1875rem;
+  font-weight: var(--fw-700);
+  color: var(--dl-text-primary, var(--color-content-primary));
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: 0.8125rem;
+  color: var(--dl-text-secondary, var(--color-content-secondary));
+  margin: 0;
+  line-height: 1.4;
+}
+
+.templateBar {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.templateLabel {
+  font-size: 0.6875rem;
+  color: var(--dl-text-tertiary, var(--color-content-tertiary));
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.templateBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.templateBtn {
+  background: var(--dl-surface-input, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--dl-border, var(--color-border));
+  color: var(--dl-text-secondary, var(--color-content-secondary));
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.templateBtn:hover {
+  background: rgba(255, 61, 1, 0.12);
+  border-color: rgba(255, 61, 1, 0.4);
+  color: var(--color-brand);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--dl-text-primary, var(--color-content-primary));
+}
+
+.requiredStar {
+  color: var(--color-brand);
+}
+
+.charCount {
+  font-size: 0.6875rem;
+  color: var(--dl-text-tertiary, var(--color-content-tertiary));
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+
+.textInput,
+.textareaInput,
+.dateInput,
+.selectInput {
+  width: 100%;
+  background: var(--dl-surface-input, var(--color-surface-secondary));
+  border: 1px solid var(--dl-border, var(--color-border));
+  border-radius: var(--radius-xs);
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  font-family: var(--font-family);
+  color: var(--dl-text-primary, var(--color-content-primary));
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.textInput:focus,
+.textareaInput:focus,
+.dateInput:focus,
+.selectInput:focus {
+  background: var(--dl-surface-card, var(--color-surface-secondary));
+  border-color: var(--color-brand);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 61, 1, 0.15);
+}
+
+.textInput::placeholder,
+.textareaInput::placeholder {
+  color: var(--dl-text-tertiary, var(--color-content-tertiary));
+  font-size: 0.8125rem;
+}
+
+.textareaInput {
+  resize: vertical;
+  min-height: 75px;
+  line-height: 1.45;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-xs);
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

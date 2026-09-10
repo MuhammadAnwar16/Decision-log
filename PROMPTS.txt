@@ -1,0 +1,40 @@
+# DECISION LOG — SYSTEM PROMPTS & ARCHITECTURAL SPECIFICATION
+
+## Project Purpose
+Decision Log is an editorial-grade web application built to bring intellectual discipline to technical, strategic, and personal decisions. It forces explicit capture of:
+1. The Problem Context
+2. The Chosen Path & Core Decision
+3. Rationale (why this path over others)
+4. Competing Alternatives Considered with structured Pros & Cons
+5. Target Review Timelines
+6. Retrospective Audits (actual result vs hypothesis, learnings, success rating)
+
+---
+
+## Design System & Aesthetic Tokens
+- **Typography**: Georgia and system serif font stack (`Georgia, "Times New Roman", "Cambria", Times, serif`).
+- **Spacing Scale**: Strict custom properties:
+  - `--space-1: 4px`
+  - `--space-2: 8px`
+  - `--space-3: 16px`
+  - `--space-4: 24px`
+  - `--space-5: 32px`
+- **Color Palette**:
+  - Pure Monochrome: `#121212` (Black), `#ffffff` (White), `#fbfbfa` / `#0d0d0d` (Backgrounds), neutral grays.
+  - Single Accent Color: Warm Terracotta / Burnt Sienna (`#c2410c` / `#ea580c` in dark mode).
+- **Styling Method**: Pure CSS Modules (`*.module.css`) + `globals.css`. No external UI libraries or utility class frameworks.
+
+---
+
+## State Management Specification
+- Single custom React Hook (`useDecisions`) utilizing React 18+ `useState` and `useEffect`.
+- Automatic synchronization with `localStorage` under key `decision_log_entries_v1`.
+- Built-in data export (JSON backup and formatted Markdown ADR summaries) and JSON import.
+- Filter, search, and sorting mechanics handled via pure memoized state.
+
+---
+
+## Deployment Target
+- Static Single Page Application compatible with GitHub Pages, Vercel, and Cloudflare Pages.
+- Bundler: Vite with Rollup optimization and relative base path (`base: './'`).
+- Bundle Size Target: <3MB (Typical production build <200KB).

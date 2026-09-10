@@ -1,0 +1,116 @@
+/* Scroll Text Reveal Section */
+.revealSection {
+  padding: 140px var(--space-6) 180px;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  z-index: 5;
+  background: transparent;
+}
+
+.revealContainer {
+  max-width: 980px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-8);
+  position: relative;
+  z-index: 2;
+}
+
+.badgeWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.eyebrowTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #FFB3A0;
+  background: rgba(255, 61, 1, 0.15);
+  border: 1px solid rgba(255, 61, 1, 0.25);
+  padding: 5px 16px;
+  border-radius: var(--radius-xs);
+  transition: all 0.35s ease;
+}
+
+.eyebrowTagLight {
+  color: #FF3D01;
+  background: rgba(255, 61, 1, 0.08);
+  border-color: rgba(255, 61, 1, 0.2);
+}
+
+.statementBox {
+  width: 100%;
+}
+
+.statementText {
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  font-family: var(--font-sans);
+  margin: 0;
+  color: #EFEDEC;
+  transition: color 0.35s ease;
+}
+
+.statementTextLight {
+  color: #070605;
+}
+
+.wordItem {
+  display: inline-block;
+  white-space: pre-wrap;
+  transition: color 0.2s ease;
+  will-change: opacity, transform;
+}
+
+.highlightWord {
+  color: #FFB3A0 !important;
+  text-shadow: 0 0 24px rgba(255, 61, 1, 0.4);
+}
+
+.highlightWordLight {
+  color: #FF3D01 !important;
+  text-shadow: none;
+}
+
+.subtextWrapper {
+  max-width: 580px;
+}
+
+.subtext {
+  font-size: var(--fs-body-lg);
+  color: #A9A7A6;
+  line-height: 1.55;
+  margin: 0;
+  transition: color 0.35s ease;
+}
+
+.subtextLight {
+  color: #5F5D5C;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .revealSection {
+    padding: 100px var(--space-5) 180px;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    margin-top: -18px;
+  }
+
+  .statementText {
+    font-size: clamp(1.6rem, 6.2vw, 2.2rem);
+    line-height: 1.35;
+  }
+}
+
+

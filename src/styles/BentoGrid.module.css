@@ -1,0 +1,393 @@
+/* Bento Grid SaaS Section */
+.bentoSection {
+  padding: var(--space-12) var(--space-6) 100px;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.bentoContainer {
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: var(--fw-700);
+  color: #EFEDEC;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+}
+
+.sectionSubtitle {
+  font-size: var(--fs-body-lg);
+  color: #A9A7A6;
+  line-height: 1.5;
+}
+
+/* Asymmetric Bento Grid */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+/* Bento Card Base */
+.bentoCard {
+  background: #211F1D;
+  border: 1px solid #343130;
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bentoCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 61, 1, 0.45);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 61, 1, 0.12);
+  background: #2E2C2B;
+}
+
+/* Grid Spans */
+.cardSpan2Row2 {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(180deg, #211F1D 0%, #151312 100%);
+}
+
+.cardSpan1Row1 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.cardSpan1Row2 {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.cardSpan2Row1 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cardEyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #FFB3A0;
+}
+
+.cardTitle {
+  font-size: var(--fs-title-lg);
+  font-weight: var(--fw-700);
+  color: #EFEDEC;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.cardDesc {
+  font-size: var(--fs-body-sm);
+  color: #A9A7A6;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Visual Canvas 1: ADR Record Box (Dark) */
+.adrPreviewCanvas {
+  background: #151312;
+  border: 1px solid #343130;
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.adrMiniHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid #343130;
+}
+
+.adrMiniMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.adrIdBadge {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-700);
+  color: #FFB3A0;
+}
+
+.adrDateBadge {
+  color: #949290;
+}
+
+.adrCategoryBadge {
+  font-weight: var(--fw-600);
+  color: #EFEDEC;
+}
+
+.adrStatusBadge {
+  font-size: 10px;
+  font-weight: var(--fw-600);
+  color: #4DA972;
+  background: rgba(29, 145, 86, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.adrMiniBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.adrTitlePreview {
+  font-size: 14px;
+  font-weight: var(--fw-700);
+  color: #EFEDEC;
+  margin: 0;
+}
+
+.adrTradeoffBox {
+  background: #070605;
+  border: 1px solid #343130;
+  border-radius: var(--radius-xs);
+  padding: var(--space-3);
+}
+
+.tradeoffLabel {
+  font-size: 10px;
+  font-weight: var(--fw-700);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #FFB3A0;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.tradeoffText {
+  font-size: 11.5px;
+  color: #A9A7A6;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.adrMiniFooter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid #343130;
+}
+
+.authorBadge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #949290;
+  font-weight: var(--fw-500);
+}
+
+.avatarDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: rgba(255, 61, 1, 0.15);
+  color: #FFB3A0;
+  font-weight: var(--fw-700);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Visual Canvas 2: Metric Progress (Dark) */
+.metricVisual {
+  background: #151312;
+  border: 1px solid #343130;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.metricBig {
+  font-size: 28px;
+  font-weight: var(--fw-700);
+  color: #FFB3A0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.metricProgressTrack {
+  height: 6px;
+  background: rgba(255, 61, 1, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.metricProgressBar {
+  height: 100%;
+  width: 95%;
+  background: #FF3D01;
+  border-radius: 3px;
+}
+
+.metricSubtext {
+  font-size: 11px;
+  color: #949290;
+}
+
+/* Visual Canvas 3: Ownership Network (Dark) */
+.ownershipVisual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: #151312;
+  border: 1px solid #343130;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+}
+
+.ownerNode {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ownerAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #FF3D01;
+  color: #FFFFFF;
+  font-weight: var(--fw-700);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ownerDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ownerName {
+  font-size: 12px;
+  font-weight: var(--fw-700);
+  color: #EFEDEC;
+}
+
+.ownerRole {
+  font-size: 10.5px;
+  color: #949290;
+}
+
+.nodeConnector {
+  width: 2px;
+  height: 10px;
+  background: rgba(255, 61, 1, 0.25);
+  margin-left: 15px;
+}
+
+/* Visual Canvas 4: Search Match Snippet (Dark) */
+.searchVisualBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: #151312;
+  border: 1px solid #343130;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+}
+
+.searchBarMock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #070605;
+  border: 1px solid rgba(255, 61, 1, 0.25);
+  border-radius: var(--radius-xs);
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #FFB3A0;
+  font-family: var(--font-mono);
+}
+
+.searchMatchSnippet {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 4px 0;
+}
+
+.matchTitle {
+  font-size: 12px;
+  font-weight: var(--fw-700);
+  color: #EFEDEC;
+}
+
+.matchDesc {
+  font-size: 11px;
+  color: #A9A7A6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardSpan2Row2,
+  .cardSpan1Row1,
+  .cardSpan1Row2,
+  .cardSpan2Row1 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
